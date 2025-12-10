@@ -5,7 +5,7 @@ function Map(props) {
     return (
         <div>
 
-            <MapComponent properties={props}/>
+            <MapComponent/>
 
         </div>
     );
