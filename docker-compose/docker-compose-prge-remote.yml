@@ -33,7 +33,7 @@ services:
       - ${GEOSERVER_PORT}:8080
     volumes:
       - ../.tmp/data-${ENV_NAME}:/opt/geoserver_data
-      - ../.tmp/geoserver-config:/opt/geoserver/data_dir
+
 
 
 volumes:
