@@ -21,6 +21,11 @@ jobs:
 
       - name: Print
         run: echo 'witaj'
+
+
+      - name: uruchom środowisko docker-compose
+        run: |
+          docker-compose -f ./docker-compose/docker-compose-prge.yml --env-file .env -p local-prge up --build -d
 #
 #      - name: Login to GHCR
 #        uses: docker/login-action@v2
