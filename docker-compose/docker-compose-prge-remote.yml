@@ -13,13 +13,13 @@ services:
       context: ..
       dockerfile: docker/postgis/Dockerfile
     image: 'prge_mwi_postgis'
-    container_name: 'prge_mwi_postgis'
+    container_name: prge_mwi_postgis-${ENV_NAME}
     environment:
       - *env-postgres-db
       - *env-postgres-user
       - *env-postgres-password
     ports:
-      - 5444:5432
+      - 5445:5432
     volumes:
       - postgis-prge-mwi-data:/var/lib/postgresql/data
 
