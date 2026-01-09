@@ -5,4 +5,4 @@ router = APIRouter()
 
 @router.get("/endpoint")
 async def endpoint():
-    return {"firstName": "Emily"}
+    return {"Hello": "World"}
