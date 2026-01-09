@@ -39,8 +39,12 @@ services:
     build:
       context: ..
       dockerfile: docker/fastapi/Dockerfile
-    image: "prge_mwi_fastapi"
-    container_name: "prge_mwi_fastapi"
+    image: 'prge_mwi_fastapi'
+    container_name: 'prge_mwi_fastapi'
+    environment:
+      - *env-postgres-db
+      - *env-postgres-user
+      - *env-postgres-password
     ports:
       - 10000:10000
 
