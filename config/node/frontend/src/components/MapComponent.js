@@ -5,6 +5,7 @@ import View from "ol/View";
 import OSM from "ol/source/OSM";
 import {useGeographic} from "ol/proj";
 import "ol/ol.css";
+import {TileWMS} from "ol/source";
 
 
 function MapComponent(props) {
@@ -17,6 +18,19 @@ function MapComponent(props) {
             layers: [
                 new TileLayer({
                     source: new OSM(),
+                }),
+
+                new TileLayer({
+                    source: new TileWMS({
+                        url: 'http://localhost:9000/geoserver/prge/wms?',
+                        params: {
+                            'LAYERS': 'prge:kompozycja_bdot',
+                            'TILED': true,
+
+                        },
+                        serverType: 'geoserver',
+                        transition: 0,
+                    })
                 })
             ],
             view: new View({
