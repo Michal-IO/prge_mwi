@@ -14,7 +14,7 @@ function ListOfItems(props) {
                     setUsers(res)
                 })
 
-            console.log("działa", users)
+
 
         },  [])
 
