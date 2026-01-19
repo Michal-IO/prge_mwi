@@ -6,7 +6,7 @@ function ListOfItems(props) {
         const [users, setUsers] = useState([]);
 
         useEffect(()=>{
-            // 'http://localhost:10000/app/get_users'
+
             fetch('http://localhost:10000/app/get_users')
                 .then(res => res.json())
                 .then(res => {
