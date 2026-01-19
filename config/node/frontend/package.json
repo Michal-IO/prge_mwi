@@ -1,6 +1,6 @@
 {
   "name": "frontend",
-  "homepage": "https://Michal-IO.github.io/prge_mwi",
+  "homepage": ".",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
