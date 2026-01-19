@@ -12,7 +12,7 @@ function Services(props) {
                 component={Link}
                 to='/map'
             >
-                START
+                Przejdz do mapy
             </Button>
 
             <Button
@@ -22,7 +22,7 @@ function Services(props) {
                 component={Link}
                 to='/list'
             >
-                przejdz do listy uzytkownikow
+                Przejdz do listy uzytkownikow
             </Button>
 
             <Button
