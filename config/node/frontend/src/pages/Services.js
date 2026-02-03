@@ -12,7 +12,27 @@ function Services(props) {
                 component={Link}
                 to='/map'
             >
-                START
+                Przejdz do mapy lotnisk
+            </Button>
+
+            <Button
+                className='services__button'
+                variant='contained'
+                size='large'
+                component={Link}
+                to='/airports'
+            >
+                Przejdz do listy lotnisk
+            </Button>
+
+            <Button
+                className='services__button'
+                variant='contained'
+                size='large'
+                component={Link}
+                to='/new-airport'
+            >
+                Dodaj nowe lotnisko
             </Button>
         </div>
     );
