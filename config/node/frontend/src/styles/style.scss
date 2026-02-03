@@ -1,3 +1,14 @@
 @import 'variables.scss';
 @import 'mixins.scss';
 @import 'main.scss';
+
+body {
+  min-height: 100vh;
+  background: #e6eef0 !important;
+  background: linear-gradient(0deg, rgba(230, 238, 240, 1) 15%, rgba(92, 174, 214, 1) 60%, rgba(48, 84, 201, 1) 100%) !important;
+}
+
+.app {
+  background-color: transparent !important;
+  min-height: 100vh;
+}

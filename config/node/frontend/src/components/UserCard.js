@@ -1,36 +1,31 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
-import Avatar from '@mui/material/Avatar';
+
 import Typography from '@mui/material/Typography';
-import {red} from '@mui/material/colors';
+import {TableCell, TableRow} from "@mui/material";
 
 
 function UserCard({user}) {
-    console.log("czym jest user: ", user)
+    const borderStyle = {
+        borderRight: '1px solid #e0e0e0'
+    }
     return (
-        <div>
-            <Card sx={{maxWidth: 345}}>
-                <CardHeader
-                    avatar={
-                        <Avatar sx={{bgcolor: red[500]}} aria-label="recipe">
-                            {user.name[0]}
-                        </Avatar>
-                    }
-                    title={user.name}
-                    subheader={user.location}
-                />
+        <TableRow>
+            <TableCell sx={{...borderStyle, textAlign: 'center'}}>
+                <Typography variant="subtitle2">
+                    {user.name}
+                </Typography>
+            </TableCell>
+            <TableCell sx={{...borderStyle, textAlign: 'center'}}>
+                {user.location}
+            </TableCell>
+            <TableCell sx={{textAlign: 'center'}}>
+                <Typography sx={{letterSpacing: 1}}>
+                    {user.code}
+                </Typography>
+            </TableCell>
 
-                <CardContent>
-                    <Typography variant="body2" sx={{color: 'text.secondary'}}>
-                        Twój znajomy {user.name} opublikował {user.posts} postów.
-                    </Typography>
-                </CardContent>
-
-            </Card>
-        </div>
-    );
+        </TableRow>
+);
 }
 
 export default UserCard;

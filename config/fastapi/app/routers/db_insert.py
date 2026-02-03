@@ -14,7 +14,7 @@ def connect_to_db(db_name: str, db_user: str, db_password: str):
 
 class UserData(BaseModel):
     name: str
-    posts: int
+    code: str
     location: str
 
 
@@ -47,15 +47,15 @@ async def insert_user(user: UserData):
 
         params = {
             "name": user.name,
-            "posts": user.posts,
+            "code": user.code,
             "location": user.location,
             "lat": geom[0],
             "lon": geom[1],
         }
 
         sql_query = text("""
-                         insert into users (name, posts, location, geom)
-                         values (:name, :posts, :location, ST_SetSRID(ST_MakePoint(:lon, :lat), 4326)::geography); \
+                         insert into users (name, code, location, geom)
+                         values (:name, :code, :location, ST_SetSRID(ST_MakePoint(:lon, :lat), 4326)::geography); \
                          """)
 
         with db_connection.connect() as connection:
