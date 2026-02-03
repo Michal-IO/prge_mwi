@@ -14,9 +14,28 @@ def connect_to_db(db_name: str, db_user: str, db_password: str):
 
 class UserData(BaseModel):
     name: str
-    posts: int
+    code: str
     location: str
 
+
+def get_coordinates(city: str):
+    import requests
+    from bs4 import BeautifulSoup
+    url: str = f'https://pl.wikipedia.org/wiki/{city}'
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+                      "AppleWebKit/537.36 (KHTML, like Gecko) "
+                      "Chrome/123.0.0.0 Safari/537.36"
+    }
+    response = requests.get(url, headers=headers)
+    # print(response.text)
+    response_html = BeautifulSoup(response.text, "html.parser")
+    # print(response_html.prettify())
+    latitude = float(response_html.select('.latitude')[1].text.replace(',', '.'))
+    # print(latitude)
+    longitude = float(response_html.select('.longitude')[1].text.replace(',', '.'))
+    # print(longitude)
+    return [latitude, longitude]
 
 
 @router_insert.post("/insert_user")
@@ -24,15 +43,19 @@ async def insert_user(user: UserData):
     try:
         db_connection = connect_to_db(db_name=db_name, db_user=db_user, db_password=db_password)
 
+        geom = get_coordinates(user.location)
+
         params = {
             "name": user.name,
-            "posts": user.posts,
-            "location": user.location
+            "code": user.code,
+            "location": user.location,
+            "lat": geom[0],
+            "lon": geom[1],
         }
 
         sql_query = text("""
-                         insert into users (name, posts, location)
-                         values (:name, :posts, :location); \
+                         insert into users (name, code, location, geom)
+                         values (:name, :code, :location, ST_SetSRID(ST_MakePoint(:lon, :lat), 4326)::geography); \
                          """)
 
         with db_connection.connect() as connection:

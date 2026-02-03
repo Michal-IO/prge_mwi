@@ -20,11 +20,11 @@ const routes = createHashRouter(
             element: <Services/>
         },
                 {
-            path: "/list",
+            path: "/airports",
             element: <ListOfItems/>
         },
                 {
-            path: "/newuser",
+            path: "/new-airport",
             element: <NewUser/>
         },
         {
